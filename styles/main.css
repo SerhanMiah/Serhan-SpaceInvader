@@ -1,0 +1,154 @@
+/* ! Body Elements and All */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ! flex grid div's */
+
+.top-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 20px;
+}
+
+button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #f40000;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+
+
+.startResetSound {
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+#start {
+  padding: 30px;
+}
+
+#reset {
+  padding: 30px
+}
+
+#sound {
+  padding: 30px
+}
+
+
+.Hero-wrapper {
+  display: grid;
+  justify-content: center;
+  text-align: center;
+}
+
+.Button-Wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.score-section {
+  display: flex;
+  flex-direction: unset;
+  justify-content: center;
+  padding: 40px;
+  margin: 10px;
+
+}
+
+/* ? Font-Family and Strings */
+
+
+
+
+
+
+
+
+
+
+
+
+/* ? EndS */
+
+/* ! Game Grid Element */
+
+
+.grid {
+  align-items: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  background-color: black;
+  flex-wrap: wrap;
+  height: 100%;
+  justify-content: center;
+  height: 550px;
+  width: 550px;
+  /* ! the size of the grid */
+}
+
+.grid div {
+  /* border: 1px solid lightgrey; */
+  flex-grow: 1;
+  height: 10%;
+  width: 10%;
+  /* ! value of the grid */
+
+}
+
+/* !---------------Alien CSS Selector */
+
+
+
+.invader {
+  background-image: url(../assets/spaceinvader_image.png);
+  background-size: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+/* !Player is */
+.player {
+  background-image: url(../assets/Laser_Cannon.webp);
+  background-size: 75%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* !change the size later!  */
+.laser {
+  background-image: url(../assets/Red_laser-ConvertImage_votu8o.png);
+  background-size: 30%;
+
+
+  background-position: center;
+  background-repeat: no-repeat;
+
+
+}
+
+.destruction {
+  background-image: url(../assets/Red_laser-ConvertImage_votu8o.png);
+  background-color: red;
+}
