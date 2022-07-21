@@ -22,7 +22,6 @@ function init() {
 
 
   //?------------ Variables Sounds---------------------------------------
-  // const audioDestory = new Audio('Serhan-SpaceInvader/assets/explosion.wav')
 
 
   //?------------ Variable for inplay ---------------------------------------
@@ -48,14 +47,15 @@ function init() {
   let rightSide = true // boolean operative for true 
   // let playSound = () => new Audio('Serhan-SpaceInvader/assets/spaceinvaders1.mpeg').play()
 
-  let alienArray = [1, 2, 3, 4, 5, 6, 7, 11, 12, 13, 14, 15, 16, 17, 21, 22, 23, 24, 25, 26, 27]
+  let alienArray = []
   // allien position start! 
   //  current position 
   // ! allienarray = array.from - new array 
 
-  let alienArrayPosition = Array.from(alienArray)
-  console.log(alienArrayPosition)
+  let alienArrayPosition = []
+
   // ! position of the invaders the positon of the array 
+
 
 
 
@@ -67,15 +67,10 @@ function init() {
   console.log(highScoreDisplay)
   const scoreDisplay = document.querySelector('#score-display')
   // const playerLife = document.querySelector('#lives-display')
-  const soundBtn = document.querySelector('#soundBtn')
+  const whoWins = document.querySelector('.out-come')
+  const buttonPlay = document.getElementById('myBtn')
+  const audio = document.getElementById('myAudio')
 
-
-  // ! try and get the sound working now hmmm
-
-  // const arrayAliens = Array.from()
-  // ! creates an array that is iterable 
-
-  // ! need array location 
 
 
 
@@ -83,6 +78,10 @@ function init() {
   // highScoreDisplay.innerHTML = getHighScore()
   // ! start game button 
   function startGame() { // Done Start Button
+    alienArray = [1, 2, 3, 4, 5, 6, 7, 11, 12, 13, 14, 15, 16, 17, 21, 22, 23, 24, 25, 26, 27]
+    alienArrayPosition = Array.from(alienArray)
+    alienInvaderDestoryed = []
+
     clearInterval(invadersId)
     removeInvaders()
     removePlayer()
@@ -98,29 +97,17 @@ function init() {
 
       // ! an after image of the start game 
 
-    }, 200)
+    }, 1000)
 
   }
 
   function resetBtn() {
-
-
     removeInvaders()
+
     score = 0
     scoreDisplay.innerHTML = score
 
-    setInterval(invadersId)
-    invadersId = setInterval(() => {
-      // spaceInvaders()
-
-      // removeInvaders()
-  
-     
-    })
   }
-
-
-
 
 
   //?------------------ Player Section---------------------------------------
@@ -153,17 +140,12 @@ function init() {
   }
 
   function removeInvaders() {
-    for (let i = 0; i < alienArray.length; i++) {
-      cells[alienArray[i]].classList.remove('invader')
-    }
+
+    cells.forEach(cell => cell.classList.remove('invader'))
+
   }
 
-  function spaceInvadersPosition() { //! position of the invaders
-    for (let index = 0; index < alienArrayPosition.length; index++) {
-      cells[alienArrayPosition[index]].classList.add('invader')
 
-    }
-  }
 
   function moveInvader() {
 
@@ -205,11 +187,18 @@ function init() {
 
     // !losing condition 
     for (let index = 0; index < alienArray.length; index++) {
-      if (alienArray[index] > (cells.length - width)) {
-        console.log('game over')
+      if (alienArray[index] >= (cells.length - width)) {
+        whoWins.innerHTML = 'LOSER! Game OVER'
+        // console.log('game over')
         clearInterval(invadersId)
       }
     }
+
+    // ! need to add this somewhere!?
+
+
+
+    // hitPoints()
 
   }
 
@@ -244,11 +233,13 @@ function init() {
   }
 
   function missiles(e) { //this will add the laser as a function, remove the laser first and then add. I find it an odd way of doing things remove and then add. §
-    let test = playerLocation // laser position 
+    let laserPosition = playerLocation // laser position 
     let laserID // clear the invterval 
     // let testInterval
 
-    function fireMissiles() {
+    function moveMissile() {
+
+      console.log('moveMissile')
 
       // clearInterval(laserID)
       // ! not checking if the width 
@@ -260,49 +251,41 @@ function init() {
       // ? 
       // ! that works finally! 
       // clearInterval(invadersId)
-      cells[test].classList.remove('laser')
+      cells[laserPosition].classList.remove('laser')
 
-      if (test >= width) {
-        test -= width
-
-        cells[test].classList.add('laser')
-
+      if (laserPosition >= width) {
+        laserPosition -= width
+        cells[laserPosition].classList.add('laser')
+      } else {
+        console.log('stop this laser')
+        clearInterval(laserID) // stop animating once its gone out of the game
       }
 
-      if (cells[test].classList.contains('invader')) {
-        cells[test].classList.remove('laser')
-        cells[test].classList.remove('invader')
-        cells[test].classList.add('destruction')
+      if (cells[laserPosition].classList.contains('invader')) {
+        cells[laserPosition].classList.remove('laser')
+        cells[laserPosition].classList.remove('invader')
+        cells[laserPosition].classList.add('destruction')
 
+        setTimeout(() => cells[laserPosition].classList.remove('destruction'), 100)
 
-        setTimeout(() => cells[test].classList.remove('destruction'), 100)
         // ! add effects here
-        laserID = clearTimeout(laserID)
+        clearTimeout(laserID)
 
-        if (test >= width) {
-
-          laserID = setInterval(() => {
-            cells[test].classList.remove('laser')
-          }, 200)
-
-          // setInterval(() => cells[test].classList.remove('laser'))
-          clearInterval(laserID)
-        }
-        clearInterval(laserID)
-        const alienGone = alienArray.indexOf(test)
+        const alienGone = alienArray.indexOf(laserPosition)
         alienInvaderDestoryed.push(alienGone)
+        if (alienInvaderDestoryed.length === alienArray.length) {
+          whoWins.innerHTML = 'YOU WIN'
+          clearInterval(invadersId)
+        }
         hitPoints()
-
 
         // ! clear laser ID  inside the if statement 
         // it works seperate function yippie
-
       }
     }
     // clearInterval(laserID)
     if (e.keyCode === 38) {
-      laserID = setInterval(fireMissiles, 100)
-
+      laserID = setInterval(moveMissile, 100)
     }
   }
   // clearInterval(laserID
@@ -313,8 +296,22 @@ function init() {
   //?-----Player controller completed  -------------------------------------------
 
 
+
+
+  buttonPlay.addEventListener('click', function () {
+    if (audio.paused) {
+      audio.play()
+      // button.innerHTML = "Pause";
+    } else {
+      audio.pause()
+      // button.innerHTML = "Play";
+    }
+
+
+  })
+
   function hitPoints() {
-    score += 1
+    score += 100
     scoreDisplay.innerHTML = score
     // getHighScore(hitPoints)
   }

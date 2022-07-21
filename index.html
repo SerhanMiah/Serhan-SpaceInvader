@@ -10,50 +10,85 @@
 </head>
 
 <body>
-  <!-- ! Top Section Highest Score, Lives and Score -->
-  <div class="Hero-wrapper">
-    <div class="top-wrapper current-game">
-      <p class="highestScore">Hightest Score:<span id="hight-score">0</span>
-        <p id="lives-display">❤️❤️❤️</p>
-        <p><span id="score-display">0</span></p>
-    </div>
-    <!-- ? Game Grid!  begin Div -->
-    <div class="grid-wrapper">
-      <div class="grid">
-        <!-- Grid cells go here -->
+  <div class="container">
+    <!-- ! this will have everything inside the container!  -->
+
+    <!-- ? main container will have the score board, grid and title -->
+    <div class="main">
+      <h1>Space-invader</h1>
+      <p class="intro">Space Invaders is a fixed shooter in which the player moves a laser cannon horizontally across
+        the bottom of the screen and fires at aliens overhead.
+      </p>
+      <div class="score-board">
+        <h3>Score: </h3><span id="score-display">000</span>
       </div>
-    </div>
-    <!-- ! grid end  -->
-
-    <div class="controls-wrapper">
-
-
-      <div class="startResetSound">
-        <button id="start">Start</button>
-        <button id="reset">reset</button>
-
-        <button id='soundBtn'> Music on/off </button>
-
+      <div class="loser-winner">
+        <p>Winner or Loser</p><span class="out-come"></span>
       </div>
-      <div id="game-rules">
-        <h1>game Rules</h1>
-        <ol>
-          <li>Item One</li>
-          <li>Item Two</li>
-          <li>Item Thre</li>
-        </ol>
 
-
-
+      <div class="grid-wrapper">
+        <div class="grid">
+          <!-- Grid cells go here -->
+        </div>
       </div>
 
 
+
+      <aside class="side-container">
+        <div class="rules">
+          <h3>Intructions</h3>
+          <ul>
+            <li>
+              <p>The <strong>player</strong> controls the cannon at the bottom of the screen, which can move only horizontally. The
+                aliens moves both horizontally and vertically (approaching the cannon). The cannon can be controlled to
+                shoot laser to destroy the aliens, while the aliens will randomly shoot towards the cannon.
+              </p>
+            </li>
+            <li>
+              <p><strong>behavior:</strong>  The aliens are aligned in a rectangular formation, floating slowly in horizontal
+                direction. As the formation reaches one side, the aliens approach the bottom by a certain amount and
+                start floating in the opposite horizontal direction.
+              </p>
+            </li>
+            <li>
+              <p><strong>Scores:</strong>  Each eliminated alien is worth 100 pts.
+              </p>
+            </li>
+            <li>
+              <p><strong>Game over:</strong>  When the aliens have reached a certain vertical position (successfully invaded the planet), the game ends and a game over screen is shown in the playfield. 
+              </p>
+            </li>
+            <!-- <li>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas aliquam, maxime et at reiciendis sequi
+              </p>
+            </li> -->
+          </ul>
+        </div>
+        <div class="play-container">
+
+          <div class="startResetSound">
+            <button id="start">Start</button>
+            <button id="reset">reset</button>
+
+            <audio src="./assets/spaceinvaders1.mpeg" id="myAudio"></audio>
+
+            <button id='myBtn'> Music on/off </button>
+
+          </div>
+        </div>
+      </aside>
     </div>
 
+    <audio src="./assets/shoot.wav" id="shooter-sound"></audio>
 
-    <!-- ! end of hero wrapper -->
   </div>
-  <audio></audio>
+
+
+  <!-- 
+
+
+  <!-- ! Top Section Highest Score, Lives and Score -->
+
 </body>
 
 </html>
