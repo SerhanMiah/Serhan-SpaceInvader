@@ -6,7 +6,8 @@
   <title>Space-Invaders</title>
   <link rel="stylesheet" href="styles/main.css">
   <!-- <script src="scripts/app.js" charset="utf-8"></script> -->
-  <script src="scripts/script.js" charset="utf-8"></script>
+  <script src="./scripts/script.js" charset="utf-8"></script>
+  <link rel="icon" href="./favicon.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -39,29 +40,29 @@
           <h3>Intructions</h3>
           <ul>
             <li>
-              <p>The <strong>player</strong> controls the cannon at the bottom of the screen, which can move only horizontally. The
+              <p>The <strong>player</strong> controls the cannon at the bottom of the screen, which can move only
+                horizontally. The
                 aliens moves both horizontally and vertically (approaching the cannon). The cannon can be controlled to
                 shoot laser to destroy the aliens, while the aliens will randomly shoot towards the cannon.
               </p>
             </li>
             <li>
-              <p><strong>behavior:</strong>  The aliens are aligned in a rectangular formation, floating slowly in horizontal
+              <p><strong>behavior:</strong> The aliens are aligned in a rectangular formation, floating slowly in
+                horizontal
                 direction. As the formation reaches one side, the aliens approach the bottom by a certain amount and
                 start floating in the opposite horizontal direction.
               </p>
             </li>
             <li>
-              <p><strong>Scores:</strong>  Each eliminated alien is worth 100 pts.
+              <p><strong>Scores:</strong> Each eliminated alien is worth 100 pts.
               </p>
             </li>
             <li>
-              <p><strong>Game over:</strong>  When the aliens have reached a certain vertical position (successfully invaded the planet), the game ends and a game over screen is shown in the playfield. 
+              <p><strong>Game over:</strong> When the aliens have reached a certain vertical position (successfully
+                invaded the planet), the game ends and a game over screen is shown in the playfield.
               </p>
             </li>
-            <!-- <li>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas aliquam, maxime et at reiciendis sequi
-              </p>
-            </li> -->
+
           </ul>
         </div>
         <div class="play-container">
@@ -79,12 +80,13 @@
       </aside>
     </div>
 
-    <audio src="./assets/shoot.wav" id="shooter-sound"></audio>
-
   </div>
 
+  <audio src="./assets/explosion.wav" id="explosion"></audio>
+  <audio src="./assets/shoot.wav" id="shooter"></audio>
 
-  <!-- 
+
+  
 
 
   <!-- ! Top Section Highest Score, Lives and Score -->

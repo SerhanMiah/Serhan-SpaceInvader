@@ -56,9 +56,6 @@ function init() {
 
   // ! position of the invaders the positon of the array 
 
-
-
-
   //!-------------------- Elements -----------------------------------------
 
   const start = document.querySelector('#start')
@@ -70,7 +67,10 @@ function init() {
   const whoWins = document.querySelector('.out-come')
   const buttonPlay = document.getElementById('myBtn')
   const audio = document.getElementById('myAudio')
-
+  const explosion = document.getElementById('explosion')
+  explosion.volume = 0.2
+  const shooterSound = document.getElementById('shooter')
+  shooterSound.volume = 0.2
 
 
 
@@ -103,6 +103,7 @@ function init() {
 
   function resetBtn() {
     removeInvaders()
+
 
     score = 0
     scoreDisplay.innerHTML = score
@@ -141,7 +142,7 @@ function init() {
 
   function removeInvaders() {
 
-    cells.forEach(cell => cell.classList.remove('invader'))
+    cells.forEach(cell => cell.classList.remove('invader', 'destruction'))
 
   }
 
@@ -187,7 +188,7 @@ function init() {
 
     // !losing condition 
     for (let index = 0; index < alienArray.length; index++) {
-      if (alienArray[index] >= (cells.length - width)) {
+      if (alienArray[index] > (cells.length - width)) {
         whoWins.innerHTML = 'LOSER! Game OVER'
         // console.log('game over')
         clearInterval(invadersId)
@@ -266,7 +267,8 @@ function init() {
         cells[laserPosition].classList.remove('invader')
         cells[laserPosition].classList.add('destruction')
 
-        setTimeout(() => cells[laserPosition].classList.remove('destruction'), 100)
+        setTimeout(() => cells[laserPosition].classList.remove('destruction'), 500)
+        explosion.play()
 
         // ! add effects here
         clearTimeout(laserID)
@@ -274,6 +276,7 @@ function init() {
         const alienGone = alienArray.indexOf(laserPosition)
         alienInvaderDestoryed.push(alienGone)
         if (alienInvaderDestoryed.length === alienArray.length) {
+          whoWins.style.color = 'red'
           whoWins.innerHTML = 'YOU WIN'
           clearInterval(invadersId)
         }
@@ -285,7 +288,12 @@ function init() {
     }
     // clearInterval(laserID)
     if (e.keyCode === 38) {
+
       laserID = setInterval(moveMissile, 100)
+
+      shooterSound.play()
+
+
     }
   }
   // clearInterval(laserID
