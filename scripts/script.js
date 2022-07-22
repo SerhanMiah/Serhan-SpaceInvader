@@ -21,13 +21,13 @@ function init() {
   let score = 0
 
 
-  let invaderMovement = 1 //! this is so I can move the array elements 
+  let invaderMovement = 1 //! increment the array position
   let invadersId //! indivdiaul invader id used to clear timeout intervals
   let alienInvaderDestoryed = [] //? aliens removed after hit will return an empty array
   let playerLocation = 90
   let laserPosition = playerLocation //? this will make the position of player be the same as laser position global laserPosition
   let laserID //! to clear the interval for the laser 'pew, pew, pew' 
-  let rightSide = true 
+  let rightSide = true
 
   let alienArray = []
   let alienArrayPosition = []
@@ -40,9 +40,9 @@ function init() {
   const buttonPlay = document.getElementById('myBtn')
   const audio = document.getElementById('myAudio')
   const explosion = document.getElementById('explosion')
-  explosion.volume = 0.1
+  explosion.volume = 0.2
   const shooterSound = document.getElementById('shooter')
-  shooterSound.volume = 0.1
+  shooterSound.volume = 0.2
 
   //!------------ execution Elements -----------------------------------------
 
@@ -57,7 +57,7 @@ function init() {
     removePlayer()
     score = 0
     scoreDisplay.innerHTML = score
- 
+
     invadersId = setInterval(() => {
       player() // add player
       moveInvader()
@@ -86,10 +86,6 @@ function init() {
 
   //?----------------Player End ---------------------------------------------
 
-
-  // ? Alien Position as an ARRAY ===============================================
-
-
   function spaceInvaders() {
     for (let i = 0; i < alienArray.length; i++) {
       if (!alienInvaderDestoryed.includes(i)) {
@@ -100,9 +96,7 @@ function init() {
   }
 
   function removeInvaders() {
-
     cells.forEach(cell => cell.classList.remove('invader', 'destruction'))
-
   }
 
   function moveInvader() {
@@ -153,7 +147,7 @@ function init() {
     }
   }
 
-  //?----------Player controller start ---------------------------------------------
+  //?----------Player controller Section ---------------------------------------------
 
   document.addEventListener('keydown', function playerMovement(event) {
     if (event.keyCode === 39) {
@@ -189,26 +183,14 @@ function init() {
 
     function moveMissile() {
 
-      console.log('moveMissile')
-
-      // clearInterval(laserID)
-      // ! not checking if the width 
-      // ! check if the cells exist 
-      // ? if statement to check if it is valid stop the interval  - if not 
-      // ! Anything that contain invader will remove laser, remove invader and add the destruction 
-      // ? if statement to check if it is valid stop the interval  - if not 
-      // ! if test -= width 
-      // ? 
-      // ! that works finally! 
-      // clearInterval(invadersId)
       cells[laserPosition].classList.remove('laser')
 
       if (laserPosition >= width) {
         laserPosition -= width
         cells[laserPosition].classList.add('laser')
       } else {
-        console.log('stop this laser')
-        clearInterval(laserID) // stop animating once its gone out of the game
+
+        clearInterval(laserID)
       }
 
       if (cells[laserPosition].classList.contains('invader')) {
@@ -217,9 +199,10 @@ function init() {
         cells[laserPosition].classList.add('destruction')
 
         setTimeout(() => cells[laserPosition].classList.remove('destruction'), 500)
+        // ! explosion sound effects effects 
         explosion.play()
 
-        // ! add effects here
+
         clearTimeout(laserID)
 
         const alienGone = alienArray.indexOf(laserPosition)
@@ -239,6 +222,7 @@ function init() {
     if (e.keyCode === 38) {
 
       laserID = setInterval(moveMissile, 100)
+      // ! shooter sound effects effects 
 
       shooterSound.play()
 
@@ -253,35 +237,28 @@ function init() {
   //?-----Player controller completed  -------------------------------------------
 
 
-
-
+// ! Music button =================================================================
   buttonPlay.addEventListener('click', function () {
     if (audio.paused) {
       audio.play()
-      // button.innerHTML = "Pause";
     } else {
       audio.pause()
-      // button.innerHTML = "Play";
     }
-
-
   })
-
+// ! Hit Points  =================================================================
   function hitPoints() {
     score += 100
     scoreDisplay.innerHTML = score
-    // getHighScore(hitPoints)
+
   }
 
   start.addEventListener('click', startGame)
   reset.addEventListener('click', resetBtn)
 
-  // player function.  ! got to be ordered! 
   createGrid()
 
   player()
-  // spaceInvaders()
-  // missiles()
+
   moveInvader()
 
 }
