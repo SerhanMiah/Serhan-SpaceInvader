@@ -63,6 +63,17 @@ function init() {
       moveInvader()
     }, 1000)
 
+
+
+    let bomb = alienArray[Math.floor(Math.random() * alienArray.length)]
+    console.log(bomb)
+
+    if()
+
+
+
+
+
   }
 
   function resetBtn() {
@@ -147,6 +158,31 @@ function init() {
     }
   }
 
+  //! FIRES ENEMY LASERS ====================================================================================
+
+  function alienBomb() {
+
+
+
+
+  }
+
+
+
+
+
+
+  alienBomb()
+
+
+
+
+
+
+
+
+
+
   //?----------Player controller Section ---------------------------------------------
 
   document.addEventListener('keydown', function playerMovement(event) {
@@ -199,7 +235,6 @@ function init() {
         cells[laserPosition].classList.add('destruction')
 
         setTimeout(() => cells[laserPosition].classList.remove('destruction'), 500)
-        // ! explosion sound effects effects 
         explosion.play()
 
 
@@ -214,11 +249,9 @@ function init() {
         }
         hitPoints()
 
-        // ! clear laser ID  inside the if statement 
-        // it works seperate function yippie
       }
     }
-    // clearInterval(laserID)
+
     if (e.keyCode === 38) {
 
       laserID = setInterval(moveMissile, 100)
@@ -229,7 +262,7 @@ function init() {
 
     }
   }
-  // clearInterval(laserID
+
 
   document.addEventListener('keydown', missiles) // event Listener for missiles hahahhahahh
 
@@ -237,7 +270,7 @@ function init() {
   //?-----Player controller completed  -------------------------------------------
 
 
-// ! Music button =================================================================
+  // ! Music button =================================================================
   buttonPlay.addEventListener('click', function () {
     if (audio.paused) {
       audio.play()
@@ -245,7 +278,7 @@ function init() {
       audio.pause()
     }
   })
-// ! Hit Points  =================================================================
+  // ! Hit Points  =================================================================
   function hitPoints() {
     score += 100
     scoreDisplay.innerHTML = score

@@ -1,7 +1,4 @@
 /* ! Body Elements and All */
-
-
-
 * {
   box-sizing: border-box;
 }
@@ -193,6 +190,17 @@ h1 {
     transform: scale(1);
 
   }
+}
+
+
+.enemyLaser {
+  background-image: url(../assets/Red_laser-ConvertImage_votu8o.png);
+  background-size: 30%;
+
+
+  background-position: center;
+  background-repeat: no-repeat;
+
 }
 
 
