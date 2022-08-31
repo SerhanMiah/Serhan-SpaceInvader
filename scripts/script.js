@@ -68,7 +68,7 @@ function init() {
     let bomb = alienArray[Math.floor(Math.random() * alienArray.length)]
     console.log(bomb)
 
-    if()
+  
 
 
 
