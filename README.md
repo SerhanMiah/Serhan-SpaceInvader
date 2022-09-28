@@ -2,7 +2,7 @@
 
 My first dev project for the Software Engineering Immersive course and also my first ever project using JavaScript.
 
-![game-screenshot](./assets/screenshots/start.png)
+![game-screenshot](./assets/screenshots/image2.png)
 
 ## Deployment
 
@@ -16,6 +16,13 @@ Play SpaceInvader here: https://serhanmiah.github.io/Serhan-SpaceInvader/
 
 ## Goal and timeframe:
 To build a functioning browser game with pure JavaScript in 8 days.
+
+
+## Project Brief
+
+This involved a 7-day project to complete a classical game using Vanilla JS and CSS. I used my knowledge of JavaScript obtained at GA to make a moveable player with the function to shoot upwards. I had to clear intervals: set a Scoreboard and enable the Aliens to move down a grid. 
+
+![game-screenshot](./assets/screenshots/image2.png)
 
 
 ## Technologies used:
@@ -36,10 +43,6 @@ To build a functioning browser game with pure JavaScript in 8 days.
 * Include separate HTML, CSS and JavaScript files
 * Deploy your game online
 
-## Project Brief
-
-This involved a 7-day project to complete a classical game using Vanilla JS and CSS. I used my knowledge of JavaScript obtained at GA to make a moveable player with the function to shoot upwards. I had to clear intervals: set a Scoreboard and enable the Aliens to move down a grid. 
-
 
 ## The Approach Taken and TimeLine: 
 
@@ -47,6 +50,7 @@ This involved a 7-day project to complete a classical game using Vanilla JS and 
 As this was my first GA project, I first started planning a quick design using Excalidraw. I then input all the key elements, execution and events needed to make the game. 
 
 
+![game-screenshot](./assets/screenshots/image3.png)
 
 
 
@@ -55,7 +59,7 @@ As this was my first GA project, I first started planning a quick design using E
 I blocked this out as a visual guide on what the game will look like. On the first day, my main aim was to have the instructional team leader check me off. I did no coding and stuck to pseudo coding for the project. The Key Elements of the game – Moving the player left and right. Moving the Space invaders left and right and getting the shooter with the KeyCode UP. 
 
 
-
+![game-screenshot](./assets/screenshots/image4.png)
 
 Drawing a template of what the design will eventually look like. This will be the initial step in creating a Space-Invaders game. I started by using the drawing app Excalidraw to draft a rough idea of what needed to be done. 
 
@@ -63,9 +67,10 @@ Drawing a template of what the design will eventually look like. This will be th
 
 ### Starting with pseudo coding: 
 
+![game-screenshot](./assets/screenshots/image12.png)
 
 
-
+![game-screenshot](./assets/screenshots/image13.png)
 
 
 
@@ -147,6 +152,10 @@ I first started by making an HTML div element, inside the div element I created 
 
 }
 ```
+
+![game-screenshot](./assets/screenshots/image6.png)
+
+
 
 For this project, we will be using JavaScript and CSS to create the grid. So creating a function called createGrid() will hold the cell from the div element. Once the CSS was completed. The function createGrid was done by using a for loop to wrap the cell and push the cell so what was created was shown below and in the browser. 
 
@@ -240,6 +249,10 @@ I was able to assign numbers from the grid to become the alien invaders. The num
       moveInvader()
     }, 1000)
 ```
+
+
+![game-screenshot](./assets/screenshots/image5.png)
+
 
 Tracking the Alien movement was challenging. I needed the Alien to move across the grid to the right and then down and then to the left. To do this I created a variable that will hold the value of one. This is so that I can add to the value. So if the Characters move right we will need to add 1 to the value. Since this was a value I can decrease the value.
 
