@@ -98,28 +98,57 @@ On the 6th day, I started by adding the button elements for  Start, Reset and mu
 
 I first started by making an HTML div element, inside the div element I created another div which will hold all the grid cells. We need to fill the grid with the width and the cell. This was used to push and append to the created grid function below. Creating the grid also requires using CSS, this will be the design side of the grid including the size, colour and height. This is shown below.
 
+```HTML
+    //HTML GRID DIV ---------------------------------------------
 
+      <div class="grid-wrapper">
+        <div class="grid">
+          <!-- Grid cells go here -->
+        </div>
+      </div>
+```
 
+```Javascript
+  const width = 10
+  const cellCount = width * width // the amount of the cells
+  const cells = [] // cells as a grid - individual 
+  const grid = document.querySelector('.grid')
+  // ! -----------Grid ----------------
 
+  function createGrid() {
+    for (let i = 0; i < cellCount; i++) {
+      const cell = document.createElement('div')
+      cells.push(cell)
+      grid.appendChild(cell)
+    }
+  }
+```
 
+```CSS
+.grid {
+  align-items: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  background-color: black;
+  flex-wrap: wrap;
+  height: 100%;
+  justify-content: center;
+  height: 550px;
+  width: 550px;
+  /* ! the size of the grid */
+}
 
+.grid div {
+  /* border: 1px solid lightgrey; */
+  flex-grow: 1;
+  height: 10%;
+  width: 10%;
+  /* ! value of the grid */
 
+}
+```
 
-
-
-
-
-For this project, we will be using JavaScript and CSS to create the grid. So creating a function called createGrid() will hold the cell from the div element. 
-
-
-
-
-
-
-
-
-
-Once the CSS was completed. The function createGrid was done by using a for loop to wrap the cell and push the cell so what was created was shown below and in the browser. 
+For this project, we will be using JavaScript and CSS to create the grid. So creating a function called createGrid() will hold the cell from the div element. Once the CSS was completed. The function createGrid was done by using a for loop to wrap the cell and push the cell so what was created was shown below and in the browser. 
 
 
 
