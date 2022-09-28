@@ -188,11 +188,10 @@ function init() {
   document.addEventListener('keydown', function playerMovement(event) {
     if (event.keyCode === 39) {
       playerRight()
-      // need to stop fully top to the right edge maybe add an if statement
-      // if width -1? 
+      // // STOPS AT THE LEFT EDGE
     } else if (event.keyCode === 37) {
       playerLeft()
-      // need to stop fully top to the right edge maybe add an if statement
+      // STOPS AT THE LEFT EDGE
     }
   })
 

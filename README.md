@@ -128,20 +128,54 @@ Once the CSS was completed. The function createGrid was done by using a for loop
 
 So creating a global variable to hold the player location, for this project I chose the array grid 90. When the game starts, the player will be positioned at grid 90, shown below as a variable. 
 
+```javascript
+    //PLAYER POSITION ---------------------------------------------
+let playerLocation = 90
+```
+
 
 
 Creating the function for left and right and setting the event keyCode to access
 The player. Using key code events to store the movement and then applying a function playerRight and playerLeft which is shown below.
 
+```javascript
+    //PLAYER MOVEMENT ---------------------------------------------
 
+ function playerLeft() {
+    removePlayer(playerLocation)
+    if (playerLocation % width !== 0) {
+      playerLocation -= 1
+    }
+    player(playerLocation)
+  }
 
-
+  function playerRight() {
+    removePlayer(playerLocation)
+    if (playerLocation % width < width - 1) {
+      playerLocation += 1
+    }
+    player(playerLocation)
+  }
+```
 Extra resources – 
 
 https://www.toptal.com/developers/keycode/table-of-all-keycodes
 
 list all the keyCode 
 
+```javascript
+    //PLAYER MOVEMENT ---------------------------------------------
+
+  document.addEventListener('keydown', function playerMovement(event) {
+    if (event.keyCode === 39) {
+      playerRight()
+      // // STOPS AT THE LEFT EDGE
+    } else if (event.keyCode === 37) {
+      playerLeft()
+      // STOPS AT THE LEFT EDGE
+    }
+  })
+```
 
 
 
@@ -158,14 +192,37 @@ One of the most tricky parts of the project was to get the aliens/space invaders
 Creating the aliens and setting the position of the alien invaders. Since the creation of the grid.
 I was able to assign numbers from the grid to become the alien invaders. The number I have chosen from using the array method to hold the position of each alien. From 1, 2, 3, 4, 5, 6, 7, 11, 12, 13, 14, 15, 16, 17, 21, 22, 23, 24, 25, 26, 27 inside the grid will hold the aliens.
 
+```javascript
+    //SPACESHIP POSITION ---------------------------------------------
 
+ function startGame() { // Done Start Button
+    alienArray = [1, 2, 3, 4, 5, 6, 7, 11, 12, 13, 14, 15, 16, 17, 21, 22, 23, 24, 25, 26, 27]
+    alienArrayPosition = Array.from(alienArray)
+    alienInvaderDestoryed = []
 
+    clearInterval(invadersId)
+    removeInvaders()
+    removePlayer()
+    score = 0
+    scoreDisplay.innerHTML = score
 
+    invadersId = setInterval(() => {
+      player() // add player
+      moveInvader()
+    }, 1000)
+```
 
 Tracking the Alien movement was challenging. I needed the Alien to move across the grid to the right and then down and then to the left. To do this I created a variable that will hold the value of one. This is so that I can add to the value. So if the Characters move right we will need to add 1 to the value. Since this was a value I can decrease the value.
 
-
-
+```CSS
+    //SPACESHIP CSS ---------------------------------------------
+.invader {
+  background-image: url(../assets/spaceinvader_image.png);
+  background-size: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+```
 The code is shown below on how the movement of the grid. 
 ```javascript
     //SPACESHIP MOVEMENT ---------------------------------------------
@@ -219,10 +276,6 @@ The code is shown below on how the movement of the grid.
   }
 ```
 
-
-
-
-
 Since I needed to loop all the selected numbers I used a for loop to select the numbers and add them with a classList using a combination of DOM elements and CSS. Using CSS and a class to have the background image of the space invade fixed so it will be displayed on the grid. 
 
 
@@ -233,12 +286,17 @@ Since I needed to loop all the selected numbers I used a for loop to select the 
 
 For this part, I had to use CSS and JS. For this to work I had to add a class .laser in the CSS file. It will hold the image of the laser and its content. Including its size and position. 
 
-
-
+```CSS
+    //SPACESHIP LASER CSS ---------------------------------------------
+.laser {
+  background-image: url(../assets/Red_laser-ConvertImage_votu8o.png);
+  background-size: 30%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+```
 
 I also need to track the position of the laser. I needed the position to be the same as the player's location and use a let variable so that it can be changeable according to the player's movement. 
-
-
 
 
 So first was to move the laser upwards. Creating a new function called missiles which will hold an event. Adding the missiles and removing the missiles come in two different parts. 
