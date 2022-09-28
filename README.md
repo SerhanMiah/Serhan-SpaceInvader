@@ -296,15 +296,15 @@ For this part, I had to use CSS and JS. For this to work I had to add a class .l
 }
 ```
 
-I also need to track the position of the laser. I needed the position to be the same as the player's location and use a let variable so that it can be changeable according to the player's movement. 
-
-
-So first was to move the laser upwards. Creating a new function called missiles which will hold an event. Adding the missiles and removing the missiles come in two different parts. 
-
-
+I also need to track the position of the laser. I needed the position to be the same as the player's location and use a let variable so that it can be changeable according to the player's movement. So first was to move the laser upwards. Creating a new function called missiles which will hold an event. Adding the missiles and removing the missiles come in two different parts. 
 As a local variable, we hold the laser position to be equal to the player location and have a laser Id to store the intervals. 
 
-
+```javascript
+    // PLAYER KEYCODE MISSLE MOVEMENT ---------------------------------------------
+    let laserPosition = playerLocation // laser position 
+    let laserID // clear the invterval 
+    // let testInterval
+```
 
 
 
@@ -312,111 +312,75 @@ The next part inside the function of the missile is to create a new function cal
 
 Create a classList.remove inside the moveMissile function. 
 
+```javascript
+    // PLAYER KEYCODE MISSLE MOVEMENT ---------------------------------------------
+    function moveMissile() {
 
+      cells[laserPosition].classList.remove('laser')
+```
 
 By creating an if-else statement to move the laser based on the width of the grid and laser position. if the laser position is greater or equal to the width within the if statement then the laser position will be minus or equal to the width and the laser will be added. 
 
-
-
-
-
 Since I was using a setInterval the laserID was created to clear the interval so that it would not allow the laser to keep going past the grid.
 
+```javascript
+    // LASER POSITION SETINTERVAL MISSLE MOVEMENT ---------------------------------------------
+      if (laserPosition >= width) {
+        laserPosition -= width
+        cells[laserPosition].classList.add('laser')
+      } else {
 
-
-
+        clearInterval(laserID)
+      }
+```
 
 The player can shoot. The next was to create a series of sequences when the player hits the alien invaders. Below is the code explaining how I got the player to remove the alien and add the destruction sequence. 
 
+```javascript
+    // PLAYER KEYCODE MISSLE MOVEMENT ---------------------------------------------
+      if (cells[laserPosition].classList.contains('invader')) {
+        cells[laserPosition].classList.remove('laser')
+        cells[laserPosition].classList.remove('invader')
+        cells[laserPosition].classList.add('destruction')
+
+        setTimeout(() => cells[laserPosition].classList.remove('destruction'), 500)
+        explosion.play()
 
 
+        clearTimeout(laserID)
+
+        const alienGone = alienArray.indexOf(laserPosition)
+        alienInvaderDestoryed.push(alienGone)
+        if (alienInvaderDestoryed.length === alienArray.length) {
+          whoWins.style.color = 'red'
+          whoWins.innerHTML = 'YOU WIN'
+          clearInterval(invadersId)
+        }
+        hitPoints()
+
+      }
+    }
+```
 
 This was so that if the laser position contains the invader it will remove the laser and invader. After the invader and laser is removed add a fourth property to add the destruction. I was able to add a timeout inside the if statement so that with 500 milliseconds the destruction property will be added. 
 
-
-
 The last section is to add the keyCode event up. As I listed the missile function as a key event to complete the missile function as it would be an eventlistener.
 
-
-
 ```javascript
-    // PLAYER SPACESHIP MOVEMENT ---------------------------------------------
+    // PLAYER KEYCODE MISSLE MOVEMENT ---------------------------------------------
 
-    function handleKeyDown(event) {
-      cells[playerPosition].classList.remove('spaceship')
-      switch (event.keyCode) {
-        case 39:
-          playerPosition < 120 ? playerPosition++ : playerPosition
-          break
-        case 37:
-          playerPosition > 110 ? playerPosition-- : playerPosition
-          break
-        case 32:
-          fireLaser()
-          break
-        default:
-          playerPosition
-      }
-      cells[playerPosition].classList.add('spaceship')
+     if (e.keyCode === 38) {
+
+      laserID = setInterval(moveMissile, 100)
+      // ! shooter sound effects effects 
+
+      shooterSound.play()
+    }
     }
 ```
 
-* I placed the invaders on the grid by creating an invaders array, which included the index values of the squares on the grid
-* Then I worked on the invader movement logic, which moves the invaders right, down, left and down following a lead invader. I created a timer to move the invader armada until the invaders reach the bottom row.
 
-```javascript
-      // INVADER MOVEMENT LOGIC ------------------------------------------------
 
-      if (leadInvader % width === 3 && direction === 1) {
-        direction = width
-      } else if (leadInvader % width === 3 && direction === width) {
-        direction = -1
-      } else if (leadInvader % width === 0 && direction === -1) {
-        direction = width
-      } else if (leadInvader % width === 0 && direction === width) {
-        direction = 1
-      }
-      addInvaders()
-      reachPlayer()
-    }
-```
-
-* When the invaders reach the bottom row or when the player is hit by invader fire, this calls a Game Over function which displays player's score and clears the grid and resets the game variables.
-* Then it was time to create some lasers. Laser movements across the grid are controlled timers. When player lasers hit the invader armada, the hit invader is spliced off the array, once all invaders are eliminated this calls a youWin() function. Invaders fire by setting a timer to select a random invader from the first row to fire every 2.5 seconds.
-
-```javascript
-      // MAKE LASER ADVANCE ACROSS THE GRID ----------------------------------------------------
-
-      function laserAdvance() {
-        cells[laserIndex].classList.remove('laser') // remove laser class
-        if (laserIndex > width - 1) {
-          laserIndex = laserIndex - width // finding the cell directly above current laserindex
-          cells[laserIndex].classList.add('laser') // add class to next cell
-          if (laserIndex === width - width) { // stops at the grid
-            // console.log('past grid!')
-            clearInterval(laserTimerId)
-            cells[laserIndex].classList.remove('laser')
-          }
-          
-          // COLLISION DETECTION ---------------------------------------------------------------
-
-          if (cells[laserIndex].classList.contains('invaders')) { // If laser 'hits' invader
-            clearInterval(laserTimerId) //stop timer
-            cells[laserIndex].classList.remove('invaders', 'laser') // clear cell from both classes
-            const killedInvader = invaderArray.indexOf(laserIndex) // locates the index of hit invader
-            invaderArray.splice(killedInvader, 1)
-            score += 1000
-            scoreTally.innerHTML = score
-            enemyAudio.src = './assets/zap.wav'
-            enemyAudio.play()
-            if (invaderArray.length === 0) {
-              youWin()
-            }
-          }
-        }
-      }
-    }
-```
 
 ## Bugs
 * There are some obvious bugs I would like to address by making the aliens shoot down and seeing how this app will be made in React for future development.
