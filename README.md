@@ -1,186 +1,384 @@
-# Serhan-SpaceInvader
+# Project One  - Space-Invaders
 
-General Assembly – 
+My first dev project for the Software Engineering Immersive course and also my first ever project using JavaScript.
+
+![game-screenshot](./assets/screenshots/start.png)
+
+## Deployment
+
+Play SpaceInvader here: https://serhanmiah.github.io/Serhan-SpaceInvader/
+
+## Getting started
+
+1. Access the source code via the 'Clone or download' button 
+2. Open the index.html file in your browser of choice to start the game.
 
 
+## Goal and timeframe:
+To build a functioning browser game with pure JavaScript in 8 days.
 
-Project 1 - Space-Invaders
 
-Create a Space Invader game is a fixed shooter in which the player moves a laser cannon horizontally across the bottom of the screen and fires at aliens overhead. The player can only move left or right. The aliens also move from left to right, and also down each time they reach the side of the screen. Once the player has destroyed a wave of aliens, the game starts again. The aim is to achieve the highest score possible before either being destroyed by the aliens or allowing them to reach the planet's surface.
-
-Game link
-
-Insert here : 
-
-https://syztemerror.github.io/Serhan-SpaceInvader/
-
-Overview and Concept:
-
-I had one week to build a grid-based game using JavaScript, HTML and CSS. My own
-version of Space-Invaders. I have used the skill-set I learned through the last 3-4 weeks to make the game.
-
-Technologies used
-
-HTML 
-
-•    Header with logo.
-•    Grid with Cells 99 cells.
-•    Intro, game over and Win overlays with 'start' buttons.
-•    Audio element for my background music and sound effects.
-•    Favicon to display in the browser tab.
+## Technologies used:
+* Audio element for my background music and sound effects.
+* Favicon to display in the browser tab.
+* CSS Animation
+* Position and absolute
+* JavaScript(ES6)
+* GitHub
 
 
 
+## Game Brief:
+* Render a grid-based game in the browser
+* Create a one-player game against the computer
+* The computer must be able to randomly place its pieces at the start of the game
+* Design logic for winning and losing and display this on the screen
+* Include separate HTML, CSS and JavaScript files
+* Deploy your game online
+
+## Project Brief
+
+This involved a 7-day project to complete a classical game using Vanilla JS and CSS. I used my knowledge of JavaScript obtained at GA to make a moveable player with the function to shoot upwards. I had to clear intervals: set a Scoreboard and enable the Aliens to move down a grid. 
 
 
-CSS
-● Grid using flex-box and grid.
-● CSS Animation for the destruction of the space invaders, start and restart buttons and "you win"
-● position and absolute
+## The Approach Taken and TimeLine: 
 
-JavaScript
-● KeyCode arrow left, arrow right and arrow Up events to move the characters and fire the missiles.
-● setInterval to move obstacles.
-● Play and pause sounds.
-● Click events to start the game and reset the game.
-
-GitHub
-•    Deploying the website and using various git’s protocols for the project.
-
-The Approach Taken: 
-
-Day 1 – Psedocode and basic structures 
-– As this was my first GA project, I first started planning a quick design using excalidraw. I then input all the key elements, execution and events needed to make the game. 
-
- 
-
-I blocked this out as a visual guide ON what the game will look like. On the first day, my main aim was to have the instructional team leader check me off. I did no coding and stuck to pseudo coding for game. The Key Elements of the game – Moving the player left and right. Moving the Space invaders left and right and get the shooter with the KeyCode UP. 
- 
-
-Drawing a template of what the design will eventually look like. This will be the initial step in creating a Space-invader game. Started with the drawing app excalidraw to have a rough idea of what needs to be done. 
-
-Starting the pseudo coding. 
-
- 
-Grid Creation 
- 
-
-Movement of the player with the keyCode
-
- 
-
-
-Moving the Aliens 
-This was a basic concept on how to move the alien Left and Right using the knowledge I have gained in the player Movement. 
-
-
-
-
-Firing the Gun 
-
- 
-
-
-
-
-•    Create the size - 10 x 10 
-•    Make all the shapes inside the image 
-•    Add demo enemies to the HTML class list for using for loop to select all the space invaders 
-•    The basic template of the key characters (space invaders - aka aliens, shooter, laser, destruction, music)
-
-
-Day 2 – Div creation and blocking the character’s movement     
-•    Character movement and challenges – How to stop the image from going off the Grid 
-•    Assigning keycode so that the player can use the arrow keys Left and Right to move the player 
-
-Blocking the grid using a Document EventListener to make a function to move the player 
-
- 
+### Day 1 – Pseudocode and basic structures 
+As this was my first GA project, I first started planning a quick design using Excalidraw. I then input all the key elements, execution and events needed to make the game. 
 
 
 
 
 
 
- 
 
-Using the array position of 90 will set the character at the bottom of the grid.
-Day two plan – moving the tank left and right. 
+I blocked this out as a visual guide on what the game will look like. On the first day, my main aim was to have the instructional team leader check me off. I did no coding and stuck to pseudo coding for the project. The Key Elements of the game – Moving the player left and right. Moving the Space invaders left and right and getting the shooter with the KeyCode UP. 
+
+
+
+
+Drawing a template of what the design will eventually look like. This will be the initial step in creating a Space-Invaders game. I started by using the drawing app Excalidraw to draft a rough idea of what needed to be done. 
+
+
+
+### Starting with pseudo coding: 
+
+
+
+
+
+
+
+### Day 2 – Div creation and blocking the character’s movement 
+
+
+On the second day, I created a variable to hold the position of the player and made two functions that will assign the role of the character’s movement. Inside both functions they will hold keystrokes of left and right and will stop if the grid is greater or equal to the length of the grid, these were made inside a document Event Listener. 
+
+
+### Day 3 - Creating the space invaders movement 
+
+On the third day, with the block of the space invader completed, I started with the alien movement as a global variable. The concept of the space invader movement was to move right, down, left and then down again. In which they will be looping down towards the end of the grid. By creating a function so that the player will add one to the cell which will allow the alien to move one grid space at a time. By using a Boolean operative this is so that the player moving right will be true and when moving to the left it will be a negative value.  
+
+
+### Day 4 - Creating the shooting mechanic and clearing the intervals
+
+On the fourth day, create a shooter function mechanic so that the player can press the up button and the laser will go up the grid, hitting the end of the grid. Creating a global variable that will hold the position of the player. Once I had the position of the player stored. I created this by creating two functions, one to hold the key event so that it will hold the keycode up and another so that the missile will fire up the grid. 
+
+
+### Day 5 – Get the shooter to destroy the space invader
+
+On the 5th day, my focus was to get the shooter function to work, I did this by creating a function called missile. Inside the function, it has another function inside called move missile. I made this a key event so that when the player presses the up button the player will fire a laser that will destroy the alien. 
+
+### Day 6 – Add the buttons, Start, reset and music to the game and more design 
+
+On the 6th day, I started by adding the button elements for  Start, Reset and music and the ability to trigger it on and off to the game. By adding an HTML element audio inside the main file, I could add the sound I wanted. The process of using CSS animation and keystrokes happens when the player shoots and when the alien gets destroyed.
+
+
+# Featured Code:
+
+I first started by making an HTML div element, inside the div element I created another div which will hold all the grid cells. We need to fill the grid with the width and the cell. This was used to push and append to the created grid function below. Creating the grid also requires using CSS, this will be the design side of the grid including the size, colour and height. This is shown below.
+
+
+
+
+
+
+
+
+
+
+
+
+For this project, we will be using JavaScript and CSS to create the grid. So creating a function called createGrid() will hold the cell from the div element. 
+
+
+
+
+
+
+
+
+
+Once the CSS was completed. The function createGrid was done by using a for loop to wrap the cell and push the cell so what was created was shown below and in the browser. 
+
+
+
+
+## Moving the player, left and right
+
+So creating a global variable to hold the player location, for this project I chose the array grid 90. When the game starts, the player will be positioned at grid 90, shown below as a variable. 
+
+
 
 Creating the function for left and right and setting the event keyCode to access
-The player. 
+The player. Using key code events to store the movement and then applying a function playerRight and playerLeft which is shown below.
 
-Extra resourses – 
+
+
+
+Extra resources – 
 
 https://www.toptal.com/developers/keycode/table-of-all-keycodes
 
 list all the keyCode 
 
 
-    
 
-Day 3 - creating the space invaders movement –     
-•    Blocking the alien characters with an Array – This was so that I have a start position of the array 
-•    Use of CSS and ClassList to loop all the alien characters with a red colour.
-•    Moving the character right and left and go down the grid until it reaches the End
-•    Methods used – Removing the player and Adding the player one cell at a time 
-•    Boolean operative this is so that the player moving right will be true and when it moves to the left it will be known as a negative. It was easier to move the player Right than left but ran into some glitches when the player was at the edge of the grid/cells
-•    Go the movement of the Character to the end but ran into trouble on set intervals as the Alien characters were going off the grid. 
-•    The solution on how to fix this was paused on day three due to it was something I could figure out straight away. 
+
+After getting the movement done, using an addEventListener on key-down the function will hold an event. If the player presses the keyCode 39 it will move Right and if the player presses button 37 it will go left. 
 
 
 
-Day 4 - creating the shooting mechanic and clearing the intervals
-•    Making the shooter mechanic
-•    This to consider when making the shooter
-•    keycode UP to trigger the shooter to go up 
-•    first thing is to look at the grid/cells and remove/add classList shooter to the Game 
-•    I started by creating two functions–
-o    The move missile function will hold the main and have an event within the parameter to fire
-o    Set another keycode to hole the function up! If the user shoots up then the missile will fire.
-o    Inside the move Missile function, another function will be the fire Missile. 
-o    Add more! 
+### Creating the Alien/Space Invaders and adding the movement 
+
+ This was a basic concept on how to move the alien Left and Right using the knowledge I have gained in the player Movement. 
+
+One of the most tricky parts of the project was to get the aliens/space invaders to pan across a screen and descend swarms of aliens, preventing them from reaching the bottom of the screen.
+
+Creating the aliens and setting the position of the alien invaders. Since the creation of the grid.
+I was able to assign numbers from the grid to become the alien invaders. The number I have chosen from using the array method to hold the position of each alien. From 1, 2, 3, 4, 5, 6, 7, 11, 12, 13, 14, 15, 16, 17, 21, 22, 23, 24, 25, 26, 27 inside the grid will hold the aliens.
 
 
 
 
 
-Day 5 – Get the shooter to disappear the alien! 
-
-● This was tricky as I had problems clearing the intervals of the shooter and spent a great deal of time trying to clear the interval from disappearing going through notes and asking the lecturer for hints and help.
- 
-
-Day 6 – Add the buttons, Start, reset and music to the game and more design 
-        
--    This was an easy process as it only required three buttons start, reset and play space invader soundtrack. I also added CSS animation and keystroke music for when the invader gets destroyed and player shoots  
+Tracking the Alien movement was challenging. I needed the Alien to move across the grid to the right and then down and then to the left. To do this I created a variable that will hold the value of one. This is so that I can add to the value. So if the Characters move right we will need to add 1 to the value. Since this was a value I can decrease the value.
 
 
 
+The code is shown below on how the movement of the grid. 
+```javascript
+    //SPACESHIP MOVEMENT ---------------------------------------------
+
+    function moveInvader() {
+
+    const leftInvader = alienArray[0] % width === 0
+    const rightInvader = alienArray[alienArray.length - 1] % width === width - 1
+
+    removeInvaders() // first step remove the invader! 
+
+    // ! right side
+    if (rightInvader && rightSide) {
+      for (let i = 0; i < alienArray.length; i++) {
+        alienArray[i] += width + 1
+        invaderMovement = -1
+        rightSide = false
+      }
+    }
+    // ! left side of the grid
+    if (leftInvader && !rightSide) { // booolean operative either right or left 
+      for (let j = 0; j < alienArray.length; j++) {
+        alienArray[j] += width - 1
+        invaderMovement = 1
+        rightSide = true
+      }
+    }
+
+    // ! then looping it again to go with the direction of the invader movement with 
+
+    for (let i = 0; i < alienArray.length; i++) {
+      alienArray[i] += invaderMovement
+    }
+
+    spaceInvaders()
+
+    if (cells[laserPosition].classList.contains('invader', 'laser')) {
+      cells[laserPosition].classList.add('destruction')
+      cells[laserPosition].classList.remove('laser')
+      clearInterval(invadersId)
+    }
+
+    // !losing condition 
+    for (let index = 0; index < alienArray.length; index++) {
+      if (alienArray[index] >= (cells.length - (width - 1))) {
+        whoWins.innerHTML = 'LOSER! Game OVER'
+        // console.log('game over')
+        clearInterval(invadersId)
+      }
+    }
+  }
+```
 
 
 
 
 
+Since I needed to loop all the selected numbers I used a for loop to select the numbers and add them with a classList using a combination of DOM elements and CSS. Using CSS and a class to have the background image of the space invade fixed so it will be displayed on the grid. 
 
 
 
-Key learnings:
-● Learned how to use Flex-box.
-● Learned how to use CSS animation.
-● Learned how to create a pop-up using JavaScript, HTML and CSS.
-● Learned how to use play() and pause() functions to control the audio.
 
-Challenges:
-● Moving the space invaders left and right and then going back towards the end of the game.
-● Getting the right sound effect 
-● Making the obstacles move at a higher speed after each round.
 
-Future improvements:
-● Make it more presentable, caught covid during the first project week and was unable to work 100% on the task. 
-•    Make it more presentable
-•    Get the space invader to shoot was unable to complete this
-•    Get the high score 
+### Firing the Gun and destroying the space invaders.
 
-Bugs:
-● There are some obvious bugs, I would like to address and will be revisiting the game as soon as I am better. 
+For this part, I had to use CSS and JS. For this to work I had to add a class .laser in the CSS file. It will hold the image of the laser and its content. Including its size and position. 
 
+
+
+
+I also need to track the position of the laser. I needed the position to be the same as the player's location and use a let variable so that it can be changeable according to the player's movement. 
+
+
+
+
+So first was to move the laser upwards. Creating a new function called missiles which will hold an event. Adding the missiles and removing the missiles come in two different parts. 
+
+
+As a local variable, we hold the laser position to be equal to the player location and have a laser Id to store the intervals. 
+
+
+
+
+
+The next part inside the function of the missile is to create a new function called moveMissle. 
+
+Create a classList.remove inside the moveMissile function. 
+
+
+
+By creating an if-else statement to move the laser based on the width of the grid and laser position. if the laser position is greater or equal to the width within the if statement then the laser position will be minus or equal to the width and the laser will be added. 
+
+
+
+
+
+Since I was using a setInterval the laserID was created to clear the interval so that it would not allow the laser to keep going past the grid.
+
+
+
+
+
+The player can shoot. The next was to create a series of sequences when the player hits the alien invaders. Below is the code explaining how I got the player to remove the alien and add the destruction sequence. 
+
+
+
+
+This was so that if the laser position contains the invader it will remove the laser and invader. After the invader and laser is removed add a fourth property to add the destruction. I was able to add a timeout inside the if statement so that with 500 milliseconds the destruction property will be added. 
+
+
+
+The last section is to add the keyCode event up. As I listed the missile function as a key event to complete the missile function as it would be an eventlistener.
+
+
+
+```javascript
+    // PLAYER SPACESHIP MOVEMENT ---------------------------------------------
+
+    function handleKeyDown(event) {
+      cells[playerPosition].classList.remove('spaceship')
+      switch (event.keyCode) {
+        case 39:
+          playerPosition < 120 ? playerPosition++ : playerPosition
+          break
+        case 37:
+          playerPosition > 110 ? playerPosition-- : playerPosition
+          break
+        case 32:
+          fireLaser()
+          break
+        default:
+          playerPosition
+      }
+      cells[playerPosition].classList.add('spaceship')
+    }
+```
+
+* I placed the invaders on the grid by creating an invaders array, which included the index values of the squares on the grid
+* Then I worked on the invader movement logic, which moves the invaders right, down, left and down following a lead invader. I created a timer to move the invader armada until the invaders reach the bottom row.
+
+```javascript
+      // INVADER MOVEMENT LOGIC ------------------------------------------------
+
+      if (leadInvader % width === 3 && direction === 1) {
+        direction = width
+      } else if (leadInvader % width === 3 && direction === width) {
+        direction = -1
+      } else if (leadInvader % width === 0 && direction === -1) {
+        direction = width
+      } else if (leadInvader % width === 0 && direction === width) {
+        direction = 1
+      }
+      addInvaders()
+      reachPlayer()
+    }
+```
+
+* When the invaders reach the bottom row or when the player is hit by invader fire, this calls a Game Over function which displays player's score and clears the grid and resets the game variables.
+* Then it was time to create some lasers. Laser movements across the grid are controlled timers. When player lasers hit the invader armada, the hit invader is spliced off the array, once all invaders are eliminated this calls a youWin() function. Invaders fire by setting a timer to select a random invader from the first row to fire every 2.5 seconds.
+
+```javascript
+      // MAKE LASER ADVANCE ACROSS THE GRID ----------------------------------------------------
+
+      function laserAdvance() {
+        cells[laserIndex].classList.remove('laser') // remove laser class
+        if (laserIndex > width - 1) {
+          laserIndex = laserIndex - width // finding the cell directly above current laserindex
+          cells[laserIndex].classList.add('laser') // add class to next cell
+          if (laserIndex === width - width) { // stops at the grid
+            // console.log('past grid!')
+            clearInterval(laserTimerId)
+            cells[laserIndex].classList.remove('laser')
+          }
+          
+          // COLLISION DETECTION ---------------------------------------------------------------
+
+          if (cells[laserIndex].classList.contains('invaders')) { // If laser 'hits' invader
+            clearInterval(laserTimerId) //stop timer
+            cells[laserIndex].classList.remove('invaders', 'laser') // clear cell from both classes
+            const killedInvader = invaderArray.indexOf(laserIndex) // locates the index of hit invader
+            invaderArray.splice(killedInvader, 1)
+            score += 1000
+            scoreTally.innerHTML = score
+            enemyAudio.src = './assets/zap.wav'
+            enemyAudio.play()
+            if (invaderArray.length === 0) {
+              youWin()
+            }
+          }
+        }
+      }
+    }
+```
+
+## Bugs
+* There are some obvious bugs I would like to address by making the aliens shoot down and seeing how this app will be made in React for future development.
+
+
+### Challenges
+This was my first project using JavaScript so I faced many challenges, of which the biggest were:
+* Moving the space invaders left and right and then going back towards the end of the game. I have explained how I got the aliens moving. 
+* Getting the right sound effect was a combination of HTML, CSS and JS as I had to use audio Element and use a function that will call the soundtrack.
+* Making the obstacles move at a higher speed after each round.
+
+### Win
+* Getting the player moving left or right while having the ability to shoot upwards. I struggled with the clear interval. But found a solution using a local variable and if statement
+* Getting the invaders moving left to right and down the grid. This took a while but I have explained it above. 
+
+
+## Future improvements:
+* Make it more presentable, caught covid during the first project week and was unable to work 100% on the task.
+* Get the space invader to shoot 
+* Get a high score using local storage.
+
+## Key learnings
+Making my first static JS browser game from scratch was a great learning exercise and a fun way to consolidate my learnings. In particular, I learnt a lot about DOM manipulation, different use cases for different JS array methods, and working with setintervals.
